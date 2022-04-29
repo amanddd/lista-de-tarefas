@@ -1,7 +1,7 @@
-const getDados = () => JSON.parse(localStorage.getItem('lista')) ?? []
-const setDados = (dados) => localStorage.setItem('lista', JSON.stringify(dados))
+const getDados = () => JSON.parse(localStorage.getItem('lista')) ?? [] //ver dados salvos no Local Storage
+const setDados = (dados) => localStorage.setItem('lista', JSON.stringify(dados))//mandar dados
 
-function insert(tarefa,status, indice){
+function insert(tarefa,status, indice){ //inserir dados no HTML
     let item = document.createElement('label')
     item.classList.add('todo__item')
     item.innerHTML = `
@@ -13,7 +13,7 @@ function insert(tarefa,status, indice){
     document.getElementById('insert').appendChild(item)
 }
 
-function limparTela(){
+function limparTela(){//limpar tela para não acumular mesma informação
     let insert = document.getElementById('insert')
     while(insert.firstChild){
         insert.removeChild(insert.lastChild)
@@ -38,7 +38,7 @@ function insertNewItem (evento){ //receber tarefa nova
     }
 }
 
-function removeItem(indice){
+function removeItem(indice){//excluir uma tarefa
     const dados = getDados()
     dados.splice(indice,1)
     setDados(dados)
@@ -58,7 +58,7 @@ function clickItem(evento){
     if (elemento.type === 'submit'){
         let indice = elemento.dataset.indice
         removeItem(indice)
-    }else if(elemento.type === 'checkbox'){
+    }else if(elemento.type === 'checkbox'){//marcar como concludo
         let indice = elemento.dataset.indice
         refresh(indice)
     }
