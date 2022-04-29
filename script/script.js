@@ -1,5 +1,5 @@
-const getDados = () => JSON.parse(localStorage.getItem('lista')) ?? [] //ver dados salvos no Local Storage
-const setDados = (dados) => localStorage.setItem('lista', JSON.stringify(dados))//mandar dados
+import getDados from '/script/module/get.js' 
+import setDados from '/script/module/set.js'
 
 function insert(tarefa,status, indice){ //inserir dados no HTML
     let item = document.createElement('label')
